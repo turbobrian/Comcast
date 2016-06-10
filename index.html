@@ -17,14 +17,14 @@
       	  <div id="ageOfUniverse"></div>
           <div id="pieChart"></div>
         <h4>
-        	Total outage time:<div id="outagehours">76+ hours</div> <div id="outageminutes"></div>.
+        	Total outage time:<span id="outagehours">76+</span>hours <span id="outageminutes"></span> minutes.
         </h4>
         <h4>
-        	Total time on hold: <div id="holdhours">2 hours</div> <div id="holdminutes">48 minutes</div><!--2 hours 48 minutes-->
+        	Total time on hold: <span id="holdhours">2 hours</span> <span id="holdminutes">48 minutes</span>
         </h4>
 
         <p>
-        	Outage starting on 6/7/16.<br>
+        	Outage started on 6/7/16.
 				</p>
 				<p>
 					6/7: (<strong>30 minutes</strong>) Called and spoke to someone at Comcast. They had me reset the cable modem, to no avail. He claims to have scheduled a technician to come on 6/10, Friday. This person also offered a free speed increase and free TV for a year. I declined both offers explicitly.
@@ -52,18 +52,12 @@
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        <p class="copyright">Comcast, maintained by <a href="https://github.com/turbobrian">turbobrian</a></p>
-
+        <p class="copyright">Comcast,the timeline by <a href="https://github.com/turbobrian">turbobrian</a></p>
       </footer>
     </div>
 
-    
 
 <script>
-// var g = document.createElement('div');
-// g.id = 'outagehours';
-// var h = document.createElement('div');
-// g.id = 'outageminutes';
 setInterval( function(){
   //Outage start time 00:00 7 Jun UTC = 1465282800000
   var outageStart = new Date(2016,05,07,0,0,0,0);
@@ -72,12 +66,11 @@ setInterval( function(){
   var hoursfull = diff / 1000 /3600;
   var hours = Math.floor(hoursfull);
   var minutes = Math.floor((hoursfull % (Math.floor(hours)) * 60));
-console.error(hours);
-console.error(minutes);
+// console.error(hours);
+// console.error(minutes);
   document.getElementById("outagehours").innerHTML=hours;
   document.getElementById("outageminutes").innerHTML=minutes;
-// }, 1000 * 20);
-}, 1000 );
+}, 1000 * 10);
 
 
 
