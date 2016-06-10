@@ -17,7 +17,7 @@
       	  <div id="ageOfUniverse"></div>
           <div id="pieChart"></div>
         <h4>
-        	Total outage time:<span id="outagehours">76+</span>hours <span id="outageminutes"></span> minutes.
+        	Total outage time: <span id="outagehours">76+</span> hours <span id="outageminutes"></span> minutes.
         </h4>
         <h4>
         	Total time on hold: <span id="holdhours">2 hours</span> <span id="holdminutes">48 minutes</span>
@@ -63,15 +63,16 @@ setInterval( function(){
   var outageStart = new Date(2016,05,07,0,0,0,0);
   var outageCurrent = new Date();
   var diff = outageCurrent - outageStart;
-  var hoursfull = diff / 1000 /3600;
+  var hoursfull = diff / 1000 / 3600;
   var hours = Math.floor(hoursfull);
   var minutes = Math.floor((hoursfull % (Math.floor(hours)) * 60));
 // console.error(hours);
 // console.error(minutes);
   document.getElementById("outagehours").innerHTML=hours;
   document.getElementById("outageminutes").innerHTML=minutes;
-}, 1000 * 10);
-
+  pie2.options.data.content[1].value = hoursfull
+  pie2.redraw();
+}, 2000);
 
 
 var pie = new d3pie("pieChart", {
@@ -147,8 +148,8 @@ var pie2 = new d3pie("ageOfUniverse", {
 	"header": {
 		"title": {
 			"text": "Outage time vs. Age of Universe",
-			"fontSize": 24,
-			"font": "open sans"
+			"fontSize": 22,
+			"font": "helvetica"
 		},
 		"subtitle": {
 			"color": "#999999",
@@ -165,6 +166,7 @@ var pie2 = new d3pie("ageOfUniverse", {
 	},
 	"size": {
 		"canvasWidth": 590,
+    "pieInnerRadius": "34%",
 		"pieOuterRadius": "90%"
 	},
 	"data": {
@@ -173,12 +175,12 @@ var pie2 = new d3pie("ageOfUniverse", {
 			{
 				"label": "Outage Time",
 				"value": 76,
-				"color": "#2484c1"
+				"color": "#0066cc"
 			},
 			{
 				"label": "Age of Universe",
-				"value": 100000,
-				"color": "#efefef"
+				"value": 10000,
+				"color": "#003366"
 			}
 		]
 	},
