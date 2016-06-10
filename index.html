@@ -58,22 +58,25 @@
 
 
 <script>
+var hoursfull;
 setInterval( function(){
   //Outage start time 00:00 7 Jun UTC = 1465282800000
   var outageStart = new Date(2016,05,07,0,0,0,0);
   var outageCurrent = new Date();
   var diff = outageCurrent - outageStart;
-  var hoursfull = diff / 1000 / 3600;
+  hoursfull = diff / 1000 / 3600;
   var hours = Math.floor(hoursfull);
   var minutes = Math.floor((hoursfull % (Math.floor(hours)) * 60));
 // console.error(hours);
 // console.error(minutes);
   document.getElementById("outagehours").innerHTML=hours;
   document.getElementById("outageminutes").innerHTML=minutes;
-  pie2.options.data.content[1].value = hoursfull
-  pie2.redraw();
 }, 2000);
 
+setInterval( function(){
+  pie2.options.data.content[1].value = hoursfull
+  pie2.redraw();
+}, 1000 * 20);
 
 var pie = new d3pie("pieChart", {
 	"header": {
